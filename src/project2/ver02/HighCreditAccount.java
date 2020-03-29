@@ -4,6 +4,7 @@ public class HighCreditAccount extends Account{
 	
 	private int interest;
 	private String creditRate;
+	private int crInterest;
 	
 	public HighCreditAccount(String aN, String na, int bal, int interest, String cr) {
 		super(aN, na, bal);
@@ -11,8 +12,18 @@ public class HighCreditAccount extends Account{
 		this.creditRate = cr;
 	}
 	
-	public getCrInterest() {
-		
+	public void getCrInterest() {
+		switch (this.creditRate) {
+		case "A":
+			crInterest = 
+			break;
+		case "B":
+			break;
+		case "C":
+			break;
+		default:
+			break;
+		}
 		
 	}
 	

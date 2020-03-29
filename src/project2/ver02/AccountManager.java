@@ -124,12 +124,34 @@ public class AccountManager implements MenuChoice{
 	
 	public void depositMoney(String accN, int money) {
 		
+		
 		for(int i = 0; i<numAcc; i++) {
 			if(accArr[i].getAccNum().equals(accN)) {
-				accArr[i].setBalance(accArr[i].getBalance()+money);
-				System.out.println("계좌번호: " + accArr[i].getAccNum());
-				System.out.println("입금액: " + money);
-				System.out.println("입금이 완료되었습니다.");
+				if(accArr[i] instanceof NormalAccount) {
+					accArr[i].setBalance(
+							(int)(accArr[i].getBalance()
+							+(accArr[i].getBalance()*(((NormalAccount)accArr[i]).getInterest())/100)
+							+money)
+							);
+					System.out.println("계좌번호: " + accArr[i].getAccNum());
+					System.out.println("입금액: " + money);
+					System.out.println("잔고:" + accArr[i].getBalance());
+					System.out.println("입금이 완료되었습니다.");
+				}
+				else if(accArr[i] instanceof HighCreditAccount) {
+					accArr[i].setBalance(
+							(int)(accArr[i].getBalance()
+							+(accArr[i].getBalance()*(((HighCreditAccount)accArr[i]).getInterest())/100)
+							
+							+money)
+							);
+					System.out.println("계좌번호: " + accArr[i].getAccNum());
+					System.out.println("입금액: " + money);
+					System.out.println("잔고:" + accArr[i].getBalance());
+					System.out.println("입금이 완료되었습니다.");
+					
+				}
+				
 			}
 			else {
 				System.out.println("계좌가 없습니다.");

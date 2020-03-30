@@ -84,7 +84,8 @@ public class AccountManager implements MenuChoice{
 		int bal = scan.nextInt();
 		
 		if(num == 1) {
-			System.out.printf("기본이자(%, 정수형태로 입력):");
+			//일반고객
+			System.out.printf("기본이자(%%, 정수형태로 입력):");
 			int ir = scan.nextInt();
 			
 			NormalAccount normalAccount = new NormalAccount(aN, na, bal, ir);
@@ -100,9 +101,10 @@ public class AccountManager implements MenuChoice{
 			System.out.println("계좌개설이 완료되었습니다.");
 		}
 		else {
-			System.out.printf("기본이자(%, 정수형태로 입력):");
+			//신용신뢰고객
+			System.out.printf("기본이자(%%, 정수형태로 입력):");
 			int ir = scan.nextInt();
-			System.out.printf("신용등급(A, B, C등급:");
+			System.out.printf("신용등급(A, B, C등급):");
 			String cr = scan.next();
 			
 			HighCreditAccount highCreditAccount = new HighCreditAccount(aN, na, bal, ir, cr);
@@ -142,7 +144,7 @@ public class AccountManager implements MenuChoice{
 					accArr[i].setBalance(
 							(int)(accArr[i].getBalance()
 							+(accArr[i].getBalance()*(((HighCreditAccount)accArr[i]).getInterest())/100)
-							
+							+(accArr[i].getBalance()*((HighCreditAccount)accArr[i]).getCrInterest())
 							+money)
 							);
 					System.out.println("계좌번호: " + accArr[i].getAccNum());

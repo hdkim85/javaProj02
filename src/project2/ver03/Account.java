@@ -1,6 +1,6 @@
-package project2.ver02;
+package project2.ver03;
 
-public abstract class Account{
+public abstract class Account {
 	
 	private String accNum;
 	private String name;
@@ -20,6 +20,8 @@ public abstract class Account{
 			System.out.println("잔고: " + balance);
 	}
 	
+
+
 	public String getAccNum() {
 		return accNum;
 	}

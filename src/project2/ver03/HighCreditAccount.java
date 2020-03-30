@@ -1,5 +1,4 @@
-package project2.ver02;
-
+package project2.ver03;
 
 public class HighCreditAccount extends Account implements CustomSpecialRate{
 	
@@ -31,7 +30,6 @@ public class HighCreditAccount extends Account implements CustomSpecialRate{
 		
 	}
 	
-	
 	@Override
 	public void showAccInfo() {
 		// TODO Auto-generated method stub
@@ -40,7 +38,6 @@ public class HighCreditAccount extends Account implements CustomSpecialRate{
 		System.out.println("신용등급: " + creditRate);
 		
 	}
-	
 	
 	public int getInterest() {
 		return interest;

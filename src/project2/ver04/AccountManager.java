@@ -72,7 +72,7 @@ public class AccountManager implements MenuChoice{
 						if(!(money2%500==0)) {
 							int more = (int)(((money2/500)+1)*500)-money2; 
 							System.out.println("500원 단위로만 입금 가능합니다.");
-							System.out.printf("%d원만 더 입금해라!!\n", more);
+							System.out.printf("%d원 더 내놔라!!\n", more);
 							break;
 						}
 						depositMoney(accN2, money2);
@@ -205,7 +205,9 @@ public class AccountManager implements MenuChoice{
 	}
 	
 	public void depositMoney(String accN, int money) {
-
+		
+		boolean ex = false;
+		
 		for(Account acc : accArr) {
 			if(acc.getAccNum().equals(accN)) {
 				if(acc instanceof NormalAccount) {
@@ -231,18 +233,19 @@ public class AccountManager implements MenuChoice{
 					System.out.println("잔고:" + acc.getBalance());
 					System.out.println("입금이 완료되었습니다.");
 				}
-			}
-			else {
-				System.out.println("계좌가 없습니다.");
+				ex = true;
+				
+				
 			}
 		}
-		
+		if(ex==false) 
+			System.out.println("계좌가 없습니다.");
 		System.out.println();
 		
 	}
 		
 	public void withdrawMoney(String accN, int money) {
-		
+		boolean ex = false;
 		for(Account acc: accArr) {
 			if(acc.getAccNum().equals(accN)) {
 				if(acc.getBalance() < money) {
@@ -273,12 +276,12 @@ public class AccountManager implements MenuChoice{
 						System.out.printf("%d원 만큼 더 출금해라!!", more);
 					}
 				}
+				ex = true;
 			}
-			else {
-				System.out.println("계좌가 없습니다.");
-			}	
 		}
 		
+		if(ex==false)
+			System.out.println("계좌가 없습니다.");
 		System.out.println();
 	}
 	

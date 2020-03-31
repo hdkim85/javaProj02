@@ -1,5 +1,6 @@
 package project2;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -45,7 +46,6 @@ public class BankingSystemVer05 implements MenuChoice{
 			if(st!=null) st.close();
 			if(rs!=null) rs.close();
 			if(conn!=null) conn.close();
-			System.out.println("자원을 모두 반납하였습니다.");
 		}
 		catch (Exception e) {
 			System.out.println("자원반납에 실패하였습니다.");
@@ -173,7 +173,6 @@ public class BankingSystemVer05 implements MenuChoice{
 		
 		try {
 			String sql = "SELECT * FROM banking_tb WHERE accNum like '%" + accN + "%'";
-			System.out.println(sql);
 			
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -247,11 +246,13 @@ public class BankingSystemVer05 implements MenuChoice{
 				
 			case SEARCH:
 				System.out.println("***계좌정보 검색***");
+				System.out.print("계좌번호:");
 				String sear = scan.next();
 				searchAcc(sear);
 				break;
 			case PUZZLE:
-				new Puzzle(10).start();
+				new Puzzle(3).start();
+				break;
 			case EXIT:
 				System.out.println("프로그램을 종료합니다.");
 				close();

@@ -36,25 +36,30 @@ public class Puzzle {
 	}
 	
 	public void shuffle(int sCnt) {
+
 		for(int i=0; i<sCnt; i++) {
-			
-			Random rand = new Random();
-			switch ((rand.nextInt(4)+1)) {
-			case 1:
-				move("w");
-				break;
-			case 2:
-				move("s");
-				break;
-			case 3:
-				move("a");
-				break;
-			case 4:
-				move("d");
-				break;
-			default:
-				break;
+			try {
+				Random rand = new Random();
+				switch ((rand.nextInt(4)+1)) {
+				case 1:
+					move("w");
+					break;
+				case 2:
+					move("s");
+					break;
+				case 3:
+					move("a");
+					break;
+				case 4:
+					move("d");
+					break;
+				default:
+					break;
+				}
+			} catch (ArrayIndexOutOfBoundsException e) {
+				continue;
 			}
+
 		}
 	}
 	
@@ -73,9 +78,17 @@ public class Puzzle {
 			String input = scan.next();
 			
 			if(input.equals("x"))
-				System.exit(0);
-			
-			move(input);
+				break;
+			try {
+				move(input);
+				
+			} catch (ArrayIndexOutOfBoundsException e) {
+				System.out.println("xxxxxxxxxxxxxxxxxxxxxx");
+				System.out.println("xxxxxxxx이동불가xxxxxxxxx");
+				System.out.println("xxxxxxxxxxxxxxxxxxxxxx");
+				
+			}
+			scan.nextLine();
 			boolean ans = answer();
 			
 			if(ans) {
@@ -83,6 +96,7 @@ public class Puzzle {
 				System.out.println("==^^정답입니다^^==");
 				System.out.println("재시작하시겠습니까?(y누르면 재시작, 나머지는 종료)");
 				String cho = scan.next();
+				scan.nextLine();
 				if(!(cho.toLowerCase().equals("y"))) {
 					break;
 				}
@@ -121,7 +135,7 @@ public class Puzzle {
 	
 	public void move(String arr) {
 		
-		try {
+	
 			switch (arr) {
 			case "w"://up
 				findLoc();
@@ -144,12 +158,7 @@ public class Puzzle {
 				puzzle[row][col-1] = "x";
 				break;
 			}
-		}
-		catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("xxxxxxxxxxxxxxxxxxxxxx");
-			System.out.println("xxxxxxxx이동불가xxxxxxxxx");
-			System.out.println("xxxxxxxxxxxxxxxxxxxxxx");
-		}
+			
 	}
 	
 	public boolean answer() {

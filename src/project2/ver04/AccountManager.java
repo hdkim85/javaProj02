@@ -19,7 +19,6 @@ public class AccountManager implements MenuChoice{
 	public AccountManager(int num) {
 		
 		try {
-			
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/project2/ver04/account.obj"));
 			accArr = (HashSet<Account>) in.readObject();
 			in.close();
@@ -27,7 +26,6 @@ public class AccountManager implements MenuChoice{
 		catch (Exception e) {
 			accArr = new HashSet<Account>();
 		}
-		
 	}
 	
 
@@ -116,11 +114,7 @@ public class AccountManager implements MenuChoice{
 							scan.nextLine();
 							if(num==1)
 								System.exit(0);
-							
 						}
-						
-						
-						
 						System.exit(0);
 					default:
 						break;
@@ -156,12 +150,10 @@ public class AccountManager implements MenuChoice{
 		else {
 			System.out.println("계좌개설이 완료되었습니다.");
 			acc.showAccInfo();
-			
-			
 		}
-		
-		
 	}
+	
+	
 	
 	public void makeAccount() {
 		
@@ -213,7 +205,8 @@ public class AccountManager implements MenuChoice{
 				if(acc instanceof NormalAccount) {
 					acc.setBalance(
 							(int)(acc.getBalance()
-									+(acc.getBalance()*(((NormalAccount)acc).getInterest())/100)
+									+(acc.getBalance()*(((
+											NormalAccount)acc).getInterest())/100)
 									+money)
 							);
 					System.out.println("계좌번호: " + acc.getAccNum());
@@ -224,8 +217,10 @@ public class AccountManager implements MenuChoice{
 				else if(acc instanceof HighCreditAccount) {
 					acc.setBalance(
 							(int)(acc.getBalance()
-									+(acc.getBalance()*(((HighCreditAccount)acc).getInterest())/100)
-									+(acc.getBalance()*((HighCreditAccount)acc).getCrInterest())
+									+(acc.getBalance()*(((
+											HighCreditAccount)acc).getInterest())/100)
+									+(acc.getBalance()*((
+											HighCreditAccount)acc).getCrInterest())
 									+money)
 							);
 					System.out.println("계좌번호: " + acc.getAccNum());
@@ -234,8 +229,6 @@ public class AccountManager implements MenuChoice{
 					System.out.println("입금이 완료되었습니다.");
 				}
 				ex = true;
-				
-				
 			}
 		}
 		if(ex==false) 

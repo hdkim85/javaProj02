@@ -1,0 +1,26 @@
+
+/*
+프로젝트2
+*/
+drop table banking_tb;
+
+create table banking_tb(id number(10),
+                        accNum varchar2(20),
+                        name varchar2(20),
+                        balance number(10));
+
+alter table banking_tb add primary key (id);
+
+select * from banking_tb;
+
+create sequence seq_banking
+    increment by 1 /* 증가치 */
+    start with 1 /* 시작값 */
+    nomaxvalue /* 시퀀스의 최대값 */
+    minvalue 1 /* 최소값 */
+    nocycle /* 사이클 사용 여부 */
+    nocache; /* 캐쉬 사용 여부 */
+;
+
+select * from user_objects;
+select * from user_sequences;
